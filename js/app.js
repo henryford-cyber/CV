@@ -1,63 +1,25 @@
-//slides
- 
-//tab
-var tabLinks = document.querySelectorAll(".tablinks");
-var tabContent = document.querySelectorAll(".tabcontent");
+// When the user scrolls the page, execute myFunction
+window.onscroll = function () {
+  myFunction();
+};
 
-tabLinks.forEach(function (el) {
-  el.addEventListener("click", openTabs);
-});
+// Get the header
+var header = document.getElementById("Header");
 
-function openTabs(el) {
-  var btn = el.currentTarget;
-  var electronic = btn.dataset.electronic;
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
 
-  tabContent.forEach(function (el) {
-    el.classList.remove("active");
-  });
-
-  tabLinks.forEach(function (el) {
-    el.classList.remove("active");
-  });
-
-  document.querySelector("#" + electronic).classList.add("active");
-
-  btn.classList.add("active");
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
 }
 
-$(".btn-nav-mobile").click((e) => {
-  e.preventDefault();
-  $(".nav-overlay").addClass("active");
-  $(".nav-box-mobile").addClass("active");
-});
-
-$(".nav-mobile-close").click((e) => {
-  e.preventDefault();
-  $(".nav-overlay").removeClass("active");
-  $(".nav-box-mobile").removeClass("active");
-});
-$(".nav-overlay").click((e) => {
-  e.preventDefault();
-  $(".nav-overlay").removeClass("active");
-  $(".nav-box-mobile").removeClass("active");
-});
- 
-
-$("#Header .wrapper .navbar .nav-item .nav-link").click((e) => {
-  e.preventDefault();
-  $(".nav-link").removeClass("active");
-  $(e.currentTarget).addClass("active");
-});
-
- 
-
-$(() => {
-  const clickButton = document.getElementsByClassName("faqs-item");
-  for (i = 0; i < clickButton.length; i++) {
-    clickButton[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-    });
-  }
-});
-
- 
+// $("#Header .wrapper .navbar .nav-item .nav-link").click((e) => {
+//   e.preventDefault();
+//   $(".nav-link").removeClass("active");
+//   $(e.currentTarget).addClass("active");
+// });
